@@ -1,6 +1,14 @@
 class Form{
     constructor(){
+        this.input = createInput("Name");
+        this.button = createButton("Play");
+        this.greeting = createElement('h3')
 
+    }
+    hide(){
+        this.input.hide()
+        this.greeting.hide()
+        this.button.hide()
     }
 
     display(){
@@ -8,28 +16,25 @@ class Form{
         title.html("Car Racing Game");
         title.position(130, 10);
 
-        var input = createInput("Name");
-        input.position(130,160);
+        this.input.position(130,160);
 
-        var button = createButton("Play");
-        button.position(150, 200);
+        this.button.position(150, 200);
 
-        var greeting = createElement('h3');
+        this.button.mousePressed(()=>{
+            this.input.hide();
+            this.button.hide();
 
-        button.mousePressed(function(){
-            input.hide();
-            button.hide();
-
-            var name = input.value()
+            player.name = this.input.value()
             playerCount = playerCount + 1;
+            player.index = playerCount
 
             //update the player name and player count
-            player.update(name);
+            player.update();
             player.updateCount(playerCount);
 
 
-            greeting.html("Welcome"+ name);
-            greeting.position(130,160)
+            this.greeting.html("Welcome "+ player.name);
+            this.greeting.position(130,160)
         })
                  
     }
